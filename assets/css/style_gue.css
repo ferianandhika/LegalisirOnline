@@ -1,0 +1,85 @@
+/*initekno.com*/
+body {
+  font-family: "lucida Sans Unicode", "Lucida Grande", "Segoe UI", vardana;
+  font-size: 14px;
+  display: grid;
+  grid-template-areas: 
+    "header header ads"
+    "nav article article"
+    "nav footer footer";
+  grid-template-rows: 80px 1fr 70px;  
+  grid-template-columns: 20% 1fr 15%;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  height: 100vh;
+  margin: 0;
+  }  
+header, footer, article, nav, div {
+  padding: 1.2em;
+  background: #fff;
+  }
+#pageHeader {
+  grid-area: header;
+  background: #38A6D2;
+  color: #F0F1F1;
+  }
+#pageFooter {
+  grid-area: footer;
+  }
+#mainArticle { 
+  grid-area: article;      
+  }
+#mainNav { 
+  grid-area: nav;
+ background: #F3F1F1;
+  }
+#siteAds { 
+  grid-area: ads; 
+  background: #F3F1F1;
+  } 
+@media all and (max-width: 575px) {
+  body { 
+    grid-template-areas: 
+      "header"
+      "article"
+      "ads"
+      "nav"
+      "footer";
+    grid-template-rows: 80px 1fr 70px 1fr 70px;  
+    grid-template-columns: 1fr;
+ }
+}
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+table{
+  width:50%
+}
+#warnalabel{
+  background-color:#cec6b2; 
+}
+input[type=text] {
+    width: 100%;
+    padding: 4px 2px;
+    margin: 1px 0;
+    box-sizing: border-box;
+}
+input[type=password] {
+    width: 100%;
+    padding: 4px 2px;
+    margin: 1px 0;
+    box-sizing: border-box;
+}
+input[type=email] {
+    width: 100%;
+    padding: 4px 2px;
+    margin: 1px 0;
+    box-sizing: border-box;
+}
+input[type=number] {
+    width: 100%;
+    padding: 4px 2px;
+    margin: 1px 0;
+    box-sizing: border-box;
+}
