@@ -15,22 +15,22 @@ class Status extends CI_Controller
 
   public function index()
   {
+    $id_user = $this->session->userdata('id');
+    $data['judul'] = 'Halaman Status | SIMALEJA';
+    $data['content'] = 'user/status';
+    $data['status'] = $this->M_legalisir->getStatus($id_user);
+    $this->update_status();
+    $this->load->view('templates/layouts', $data);
+  }
+
+  private function update_status(){
     $datas = $this->M_legalisir->getAll();
-
-
     foreach ($datas as $dataa) {
-
       if ($dataa->order_id == "") {
       } else {
         $data_m = $this->veritrans->status($dataa->order_id);
         $update_tm = $this->db->set('status_midtrans', $data_m->transaction_status)->where('id_legalisir', $dataa->id_legalisir)->update('legalisir');
       }
     }
-    $data['judul'] = 'Halaman Status | SIMALEJA';
-    $data['status'] = $this->db->get_where('legalisir', ['id_user' => $this->session->userdata('id')])->result();
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/navbar', $data);
-    $this->load->view('user/status', $data);
-    $this->load->view('templates/footer');
   }
 }

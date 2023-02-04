@@ -12,7 +12,7 @@
 
                 <a href="<?php echo base_url(); ?>admin/prodi/create" class="btn btn-primary mb-3"><i
                     class="mdi mdi-plus-circle mr-2"></i>Tambah Data</a>
-                <table id="key-table" class="table table-bordered">
+                <table id="key-table" class="table table-bordered table-table-responsive-lg">
                   <thead>
                     <tr>
                       <th>No</th>

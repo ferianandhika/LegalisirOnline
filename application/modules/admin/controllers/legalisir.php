@@ -41,49 +41,53 @@ class Legalisir extends CI_Controller
   public function showDetail()
   {
     $id = $this->input->post('id');
-    $row = $this->db->where('id_legalisir', $id)->get('legalisir')->row();
-
-    echo "
-        <table id='key-table' class='table table-bordered'>
-          <thead>
-            <tr>
-              <th>Nama Lengkap</th>
-              <th>NIM</th>
-              <th>Jenis Kelamin</th>
-              <th>Alamat</th>
-              <th>No Hp</th>
-              <th>Prodi</th>
-              <th>Tahun Lulus</th>
-              <th>no Ijazah</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-
-
-          <tbody>
-            <tr>
-                <td>" . $row->nama . "</td>
-                <td>" . $row->nim . "</td>
-                <td>" . $row->jenis_kelamin . "</td>
-                <td>" . $row->alamat . "</td>
-                <td>" . $row->no_hp . "</td>
-                <td>" . $row->prodi . "</td>
-                <td>" . $row->tahun_lulus . "</td>
-                <td>" . $row->no_ijazah . "</td>";
+    $row = $this->M_legalisir->getDetailStatus($id);
     if ($row->status_midtrans == 'settlement') {
-      $st_mid = 'Sudah dibayar';
-    } else {
-      $st_mid = $row->status_midtrans;
+      $st_mid = "<span class='badge badge-primary'>Sudah Dibayar</span>"; 
+    }elseif ($row->status_midtrans == 'expire'){
+      $st_mid = "<span class='badge badge-danger'>Expired</span>";
+    }else{
+      $st_mid = "<span class='badge badge-warning'>Pending</span>";
     }
     echo "
-                <td><span class='badge badge-primary'>" . $st_mid . "</span></td>
-
+        <table class='table table-bordered'>
+            <tr>  
+                  <td width='20%'><label>Nama Lengkap</label></td>  
+                  <td width='50%'>".$row->name."</td>  
             </tr>
-
-          </tbody>
-        </table>
-
-    ";
+            <tr>  
+                  <td width='20%'><label>NIM</label></td>  
+                  <td width='50%'>".$row->nim."</td>  
+            </tr>  
+            <tr>  
+                  <td width='20%'><label>Jenis Kelamin</label></td>  
+                  <td width='50%'>".$row->jenis_kelamin."</td>  
+            </tr>  
+            <tr>  
+                  <td width='20%'><label>Alamat</label></td>  
+                  <td width='50%'>".$row->alamat."</td>  
+            </tr>  
+            <tr>  
+                  <td width='20%'><label>No Hp</label></td>  
+                  <td width='50%'>".$row->no_hp."</td>  
+            </tr>  
+            <tr>  
+                  <td width='20%'><label>Prodi</label></td>  
+                  <td width='50%'>".$row->nama_prodi."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>Angkatan</label></td>  
+                  <td width='50%'>".$row->angkatan."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>No Ijazah</label></td>  
+                  <td width='50%'>".$row->no_ijazah."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>Status</label></td>  
+                  <td width='50%'>".$st_mid."</td>  
+            </tr>
+        </table> ";
   }
 
 
@@ -160,10 +164,9 @@ class Legalisir extends CI_Controller
     $id = $this->input->post('id');
     $status = $this->input->post('status');
     $getData = $this->db->where('id_legalisir', $id)->get('legalisir')->row();
-
     $update = $this->db->set('status', $status)->where('id_legalisir', $id)->update('legalisir');
     if ($update) {
-      $this->_sendEmail($id, $getData->email, $status);
+      // $this->_sendEmail($id, $getData->email, $status);
       echo "1";
     }
   }

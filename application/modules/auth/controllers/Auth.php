@@ -61,13 +61,22 @@ class Auth extends CI_Controller
 
   public function registration()
   {
-    $this->form_validation->set_rules('name', 'Name', 'required|trim');
+    $this->form_validation->set_rules('name', 'Nama', 'required|trim');
     $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
+    $this->form_validation->set_rules('nim', 'NIM', 'required|numeric|trim');
+    $this->form_validation->set_rules('prodi', 'Prodi', 'required|trim');
+    $this->form_validation->set_rules('angkatan', 'Angkatan', 'required|numeric|trim');
     $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]');
-    $this->form_validation->set_rules('password2', 'Password', 'required|trim|min_length[3]|matches[password1]');
+    $this->form_validation->set_rules('password2', 'Konfirmasi Password', 'required|trim|min_length[3]|matches[password1]');
+
+    $this->form_validation->set_message('required', '{field} tidak boleh kosong.');
+    $this->form_validation->set_message('numeric', '{field} inputan hanya angka.');
+    $this->form_validation->set_message('min_length', '{field} minimal {param} karakter.');
+    $this->form_validation->set_message('matches', '{field} harus sama dengan {param}.');
 
     if ($this->form_validation->run() == false) {
-      $this->load->view('registration');
+      $data['prodi'] = $this->db->get('prodi')->result_array();
+      $this->load->view('registration', $data);
     } else {
 
       $email = $this->input->post('email', true);
@@ -110,8 +119,8 @@ class Auth extends CI_Controller
       'protocol' => 'smtp',
       'smtp_host' => 'ssl://smtp.gmail.com',
       'smtp_port' => 465,
-      'smtp_user' => 'ferianandhika.fa98@gmail.com',
-      'smtp_pass' => 'hkhdrhrwqqiqoejg',
+      'smtp_user' => 'infotkptegal@gmail.com',
+      'smtp_pass' => 'tcbjdpzqssmasnip',
       'mailtype' => 'html',
       'charset' => 'iso-8859-1',
     ];

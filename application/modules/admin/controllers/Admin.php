@@ -20,7 +20,7 @@ class Admin extends CI_Controller
     $data['userr'] = $this->db->get_where('user', ['email' =>
     $this->session->userdata('email')])->row_array();
     $data['prodi'] = $this->M_dashboard->getProdi();
-
+    
     $this->load->view('templates/header', $data);
     $this->load->view('templates/topbar');
     $this->load->view('templates/sidebar');

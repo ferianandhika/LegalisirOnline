@@ -1,196 +1,120 @@
-<div class="page-header header-filter" data-parallax="true"
-  style="background-image: url('<?php echo base_url() ?>assets/user/img/coba3.jpg')">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h1 class="title" style="color: blue;">Welcome To SIMALEJA</h1>
-        <h4>Legalisir ijazah dan transkip nilai secara online. klik untuk melakukan legalisir</h4>
-        <h4></h4>
-        <br>
-        <a href="<?= base_url('user/legalisir'); ?>" target="_blank" class="btn btn-warning btn-raised btn-lg">
-          <i class="material-icons">next_plan</i> Lanjutkan
-        </a>
+  <!--================Home Banner Area =================-->
+  <section class="home_banner_area">
+      <div class="banner_inner d-flex align-items-center">
+          <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+          </div>
+          <div class="container">
+              <div class="banner_content text-center">
+                  <h3>Welcome To SIMALEJA</h3>
+                  <h3>Politeknik Harapan Bersama</h3>
+                  <h5>Legalisir Ijazah dan Transkip Nilai Secara Online</h5>
+                  <a class="main_btn" href="#">Mulai</a>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
-</div>
+  </section>
+  <!--================End Home Banner Area =================-->
 
-<div class="main main-raised">
-  <div class="container">
-    <div class="section text-center">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="title">Informasi</h2>
-          <h5 class="description">Legasir online merupakan fasilitas yang diberikan oleh Politeknik Harapan Bersama
-            Tegal sebagai
-            bentuk apresiasi bagi alumni. Bagi alumni yang ingin melakukan legalisir silahkan membuat permintaan
-            legalisir pada halaman Legalisir.</h5>
-        </div>
+  <!--================Finance Area =================-->
+  <section class="finance_area">
+      <div class="container">
+          <div class="finance_inner row">
+              <div class="col-lg-3 col-sm-6">
+                  <div class="finance_item">
+                      <div class="media">
+                          <div class="d-flex">
+                              <i class="lnr lnr-rocket"></i>
+                          </div>
+                          <div class="media-body">
+                              <h5>Politeknik Unggul</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="finance_item">
+                      <div class="media">
+                          <div class="d-flex">
+                              <i class="lnr lnr-users"></i>
+                          </div>
+                          <div class="media-body">
+                              <h5>Berjiwa Kewirausahaan</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="finance_item">
+                      <div class="media">
+                          <div class="d-flex">
+                              <i class="lnr lnr-smile"></i>
+                          </div>
+                          <div class="media-body">
+                              <h5>Kearifan Lokal</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                  <div class="finance_item">
+                      <div class="media">
+                          <div class="d-flex">
+                              <i class="lnr lnr-earth"></i>
+                          </div>
+                          <div class="media-body">
+                              <h5>Berdaya Saing Global</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-      <!-- <div class="features">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="info">
-              <div class="icon icon-info">
-                <i class="material-icons">chat</i>
-              </div>
-              <h4 class="info-title">Informasi Legalisir</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A
-                paragraph describing a feature will be enough.</p>
-            </div>
+  </section>
+  <!--================End Finance Area =================-->
+
+  <!--================Courses Area =================-->
+  <section class="courses_area p_120">
+      <div class="container">
+          <div class="main_title">
+              <h2>Program Studi</h2>
+              <p>Beberapa program studi yang ada di Politeknik Harapan Bersama Tegal</p>
           </div>
-          <div class="col-md-4">
-            <div class="info">
-              <div class="icon icon-success">
-                <i class="material-icons">business</i>
+          <div class="row courses_inner">
+              <?php foreach ($prodi as $data) : ?>
+              <div class="col-lg-4">
+                  <div class="grid_inner">
+                      <div class="card mb-3 mr-2" style="max-width: 540px; background-color: <?= $data['warna']; ?>;" >
+                          <div class="row no-gutters">
+                              <div class="col-md-4">
+                                  <img src="<?= base_url() ?>upload/prodi/<?= $data['gambar']; ?>" class="card-img img-thumbnail" alt="...">
+                              </div>
+                              <div class="col-md-8" >
+                                  <div class="card-body" >
+                                      <h5 class="card-title text-white"><?= $data['nama_prodi']; ?></h5>
+                                      <!-- <p class="card-text">This is a wider card with supporting text below as a natural
+                                          lead-in to additional content. This content is a little bit longer.</p>
+                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <h4 class="info-title">Profil</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A
-                paragraph describing a feature will be enough.</p>
-            </div>
+              <?php endforeach; ?>
           </div>
-          <div class="col-md-4">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="material-icons">wysiwyg</i>
-              </div>
-              <h4 class="info-title">Visi & Misi</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A
-                paragraph describing a feature will be enough.</p>
-            </div>
-          </div>
-        </div>
-      </div> -->
-    </div>
-
-    <div class="card">
-      <?php foreach ($informasi as $data) : ?>
-      <div class="card-body">
-
-
-        <?= $data['teks']; ?>
-
       </div>
-      <?php endforeach; ?>
-    </div>
+  </section>
+  <!--================End Courses Area =================-->
 
-    <!-- <div class="section text-center">
-      <h2 class="title">Here is our team</h2>
-      <div class="team">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="team-player">
-              <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="<?php echo base_url() ?>assets/user/img/faces/avatar.jpg" alt="Thumbnail Image"
-                    class="img-raised rounded-circle img-fluid">
-                </div>
-                <h4 class="card-title">Gigi Hadid
-                  <br>
-                  <small class="card-description text-muted">Model</small>
-                </h4>
-                <div class="card-body">
-                  <p class="card-description">You can write here details about one of your team members. You can give
-                    more details about what they do. Feel free to add some
-                    <a href="#">links</a> for people to be able to follow them outside the site.
-                  </p>
-                </div>
-                <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                </div>
-              </div>
-            </div>
+
+  <!--================Impress Area =================-->
+  <section class="impress_area p_120">
+      <div class="container">
+          <div class="impress_inner text-center">
+              <!-- <h2>Become an instructor</h2>
+					<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck</p>
+					<a class="main_btn2" href="#">Apply for the post</a> -->
           </div>
-          <div class="col-md-4">
-            <div class="team-player">
-              <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="<?php echo base_url() ?>assets/user/img/faces/christian.jpg" alt="Thumbnail Image"
-                    class="img-raised rounded-circle img-fluid">
-                </div>
-                <h4 class="card-title">Christian Louboutin
-                  <br>
-                  <small class="card-description text-muted">Designer</small>
-                </h4>
-                <div class="card-body">
-                  <p class="card-description">You can write here details about one of your team members. You can give
-                    more details about what they do. Feel free to add some
-                    <a href="#">links</a> for people to be able to follow them outside the site.
-                  </p>
-                </div>
-                <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="team-player">
-              <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="<?php echo base_url() ?>assets/user/img/faces/kendall.jpg" alt="Thumbnail Image"
-                    class="img-raised rounded-circle img-fluid">
-                </div>
-                <h4 class="card-title">Kendall Jenner
-                  <br>
-                  <small class="card-description text-muted">Model</small>
-                </h4>
-                <div class="card-body">
-                  <p class="card-description">You can write here details about one of your team members. You can give
-                    more details about what they do. Feel free to add some
-                    <a href="#">links</a> for people to be able to follow them outside the site.
-                  </p>
-                </div>
-                <div class="card-footer justify-content-center">
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
-                  <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div> -->
-    <!-- <div class="section section-contacts">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="text-center title">Work with us</h2>
-          <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few
-            lines about each one and contact us about any further collaboration. We will responde get back to you in a
-            couple of hours.</h4>
-          <form class="contact-form">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Your Name</label>
-                  <input type="email" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="bmd-label-floating">Your Email</label>
-                  <input type="email" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
-              <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-            </div>
-            <div class="row">
-              <div class="col-md-4 ml-auto mr-auto text-center">
-                <button class="btn btn-primary btn-raised">
-                  Send Message
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div> -->
-  </div>
-</div>
+  </section>
+  <!--================End Impress Area =================-->

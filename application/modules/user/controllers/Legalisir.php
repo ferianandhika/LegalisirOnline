@@ -23,11 +23,9 @@ class Legalisir extends CI_Controller
     $data['userr'] = $this->db->get_where('user', ['email' =>
     $this->session->userdata('email')])->row_array();
     $data['gSetting'] = $this->M_legalisir->getSetting();
-
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/navbar', $data);
-    $this->load->view('user/legalisir', $data);
-    $this->load->view('templates/footer');
+    $data['content'] = 'user/legalisir';
+    
+    $this->load->view('templates/layouts', $data);
   }
 
   public function paid_legalisir()
@@ -107,21 +105,24 @@ class Legalisir extends CI_Controller
 
   public function save()
   {
-    $this->form_validation->set_rules('nama', 'Nama', 'required');
-    $this->form_validation->set_rules('nim', 'Nim', 'required|numeric|max_length[8]');
-    $this->form_validation->set_rules('jk', 'Jenis Kelamin', 'required');
-    $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-    $this->form_validation->set_rules('hp', 'No HP', 'required|numeric|max_length[13]');
-    $this->form_validation->set_rules('prodi', 'Prodi', 'required');
-    $this->form_validation->set_rules('tahun', 'Tahun_Lulus', 'required');
-    $this->form_validation->set_rules('ijazah', 'No Ijazah', 'required');
+    $this->form_validation->set_rules('ijazah', 'No Ijazah', 'required|numeric');
+    $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
+    $this->form_validation->set_rules('kota', 'Kota', 'required');
+    $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
+    $this->form_validation->set_rules('courier', 'Expedisi', 'required');
+    $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
     // $this->form_validation->set_rules('file_ijazah', 'File Ijazah', 'required');
     // $this->form_validation->set_rules('filetranskrip', 'File Transkrip', 'required');
-    $this->form_validation->set_rules('jmlijazah', 'Jumlah ijazah', 'required');
-    $this->form_validation->set_rules('jmltranskrip', 'Jumlah transkrip', 'required');
+    $this->form_validation->set_rules('jmlijazah', 'Jumlah ijazah', 'required|numeric');
+    $this->form_validation->set_rules('jmltranskrip', 'Jumlah transkrip', 'required|numeric');
     $this->form_validation->set_rules('alasan', 'Alasan', 'required');
-    $this->form_validation->set_rules('option', 'Option', 'required');
+    $this->form_validation->set_rules('option', 'Opsi Pengiriman', 'required');
 
+    //rules indonesia
+    $this->form_validation->set_message('required', '{field} Wajib diisi');
+		$this->form_validation->set_message('numeric', '{field}  Wajib diisi angka');
+		$this->form_validation->set_message('min_length', '{field} Minimal {param} karakter');
+		$this->form_validation->set_message('max_length', '{field} Maksimal {param} karakter');
 
     if ($this->form_validation->run() == true) {
       $upload = $this->upload_file();
@@ -162,36 +163,30 @@ class Legalisir extends CI_Controller
         $dataDokumens1 = $this->upload->data();
         $dataDokumen1 = $dataDokumens1['file_name'];
       }
-      $data['id_user'] = $this->input->post('id_user');
-      $data['nama'] = $this->input->post('nama');
-      $data['email'] = $this->input->post('email');
-      $data['nim'] = $this->input->post('nim');
-      $data['jenis_kelamin'] = $this->input->post('jk');
-      $data['alamat'] = $this->input->post('alamat');
-      $data['no_hp'] = $this->input->post('hp');
-      $data['prodi'] = $this->input->post('prodi');
-      $data['tahun_lulus'] = $this->input->post('tahun');
-      $data['no_ijazah'] = $this->input->post('ijazah');
-      $data['file_ijazah'] = $dataDokumen;
-      $data['file_transkrip'] = $dataDokumen1;
-      $data['jumlah_ijazah'] = $this->input->post('jmlijazah');
-      $data['jumlah_transkrip'] = $this->input->post('jmltranskrip');
-      $data['alasan'] = $this->input->post('alasan');
-      $data['pengiriman'] = $this->input->post('option');
-      $data['prov_id'] = $this->input->post('provinsi');
-      $data['kabkot_id'] = $this->input->post('kota');
-      $data['kel_name'] = $this->input->post('kelurahan');
-      $data['harga'] = $this->input->post('harga');
-      $data['harga_legalisir'] = $this->input->post('total_legalisir');
-      $data['expedisi'] = $this->input->post('courier');
+
+      $data = [
+        'id_user' => $this->input->post('id_user'),
+        'no_ijazah' => $this->input->post('ijazah'),
+        'file_ijazah' => $dataDokumen,
+        'file_transkrip' => $dataDokumen1,
+        'jumlah_ijazah' => $this->input->post('jmlijazah'),
+        'jumlah_transkrip' => $this->input->post('jmltranskrip'),
+        'alasan' => $this->input->post('alasan'),
+        'pengiriman' => $this->input->post('option'),
+        'prov_id' => $this->input->post('provinsi'),
+        'kabkot_id' => $this->input->post('kota'),
+        'kel_name' => $this->input->post('kelurahan'),
+        'harga' => $this->input->post('harga'),
+        'harga_legalisir' => $this->input->post('total_legalisir'),
+        'expedisi' => $this->input->post('courier'),
+      ];
       $this->M_legalisir->save($data);
       //redirect('user/legalisir');
       echo "<script>
-      alert('Data Sukses disimpan');
-      window.location.href='" . base_url("user/legalisir") . "';
+      alert('Data Sukses Disimpan');
+      window.location.href='" . base_url("user/status") . "';
       </script>";
     } else {
-
       $data['judul'] = 'Halaman Legalisir | SIMALEJA';
       $data['prodi'] = $this->M_legalisir->getProdi();
       $data['userr'] = $this->db->get_where('user', ['email' =>
@@ -329,7 +324,7 @@ class Legalisir extends CI_Controller
 
     // Populate customer's shipping address
     $shipping_address = array(
-      'first_name'  => "" . $dataRow->nama . "",
+      'first_name'  => "" . $dataRow->name . "",
       'last_name'   => "",
       'address'     => "" . $dataRow->alamat . "",
       'city'        => "" . $getKota->city_name . "",
@@ -340,7 +335,7 @@ class Legalisir extends CI_Controller
 
     // Populate customer's Info
     $customer_details = array(
-      'first_name'      => "" . $dataRow->nama . "",
+      'first_name'      => "" . $dataRow->name . "",
       'last_name'       => "",
       'email'           => "" . $dataRow->email . "",
       'phone'           => "" . $dataRow->no_hp . "",
@@ -385,55 +380,61 @@ class Legalisir extends CI_Controller
   public function showDetail()
   {
     $id = $this->input->post('id');
-    $row = $this->db->where('id_legalisir', $id)->get('legalisir')->row();
-
-    echo "
-        <table id='key-table' class='table table-bordered'>
-          <thead>
-            <tr>
-              <th>Nama Lengkap</th>
-              <th>NIM</th>
-              <th>Jenis Kelamin</th>
-              <th>Alamat</th>
-              <th>No Hp</th>
-              <th>Prodi</th>
-              <th>Tahun Lulus</th>
-              <th>no Ijazah</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-
-
-          <tbody>
-            <tr>
-                <td>" . $row->nama . "</td>
-                <td>" . $row->nim . "</td>
-                <td>" . $row->jenis_kelamin . "</td>
-                <td>" . $row->alamat . "</td>
-                <td>" . $row->no_hp . "</td>
-                <td>" . $row->prodi . "</td>
-                <td>" . $row->tahun_lulus . "</td>
-                <td>" . $row->no_ijazah . "</td>";
+    // $row = $this->db->where('id_legalisir', $id)->get('legalisir')->row();
+    $row = $this->M_legalisir->getDetailStatus($id);
     if ($row->status_midtrans == 'settlement') {
-      $st_mid = 'Sudah dibayar';
-    } else {
-      $st_mid = $row->status_midtrans;
+      $st_mid = "<span class='badge badge-success'>Sudah Dibayar</span>"; 
+    }elseif ($row->status_midtrans == 'expire'){
+      $st_mid = "<span class='badge badge-danger'>Expired</span>";
+    }else{
+      $st_mid = "<span class='badge badge-warning'>Segera Lakukan Pembayaran</span>";
     }
+    if ($row->delivery_status == '1') {
+      $dt = "<span class='badge badge-success'>Dokumen Diterima</span>";;
+    }else{
+      $dt = "<span class='badge badge-warning'>Dokumen Belum Diterima</span>";;
+    }
+
     echo "
-                <td><span class='badge badge-primary'>" . $st_mid . "</span></td>
-
+        <table class='table table-bordered'>
+            <tr>  
+                  <td width='20%'><label>Nama</label></td>  
+                  <td width='50%'>".$row->name."</td>  
             </tr>
-
-          </tbody>
-        </table>
-
-    ";
+            <tr>  
+                  <td width='20%'><label>NIM</label></td>  
+                  <td width='50%'>".$row->nim."</td>  
+            </tr>  
+            <tr>  
+                  <td width='20%'><label>Prodi</label></td>  
+                  <td width='50%'>".$row->nama_prodi."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>Angkatan</label></td>  
+                  <td width='50%'>".$row->angkatan."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>No Ijazah</label></td>  
+                  <td width='50%'>".$row->no_ijazah."</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>Transaksi</label></td>  
+                  <td width='50%'>" . $st_mid . "</td>  
+            </tr>
+            <tr>  
+                  <td width='20%'><label>Dokumen</label></td>  
+                  <td width='50%'>" . $dt . "</td>  
+            </tr>
+            
+        </table> ";
   }
 
   public function sudah_diterima()
   {
     $id = $this->input->post('id');
-    $update = $this->db->set('delivery_status', 1)->where('id_legalisir', $id)->update('legalisir');
+    $update = 
+    $this->db->set('delivery_status', 1)->where('id_legalisir', $id)->update('legalisir');
+    $this->db->set('status', 3)->where('id_legalisir', $id)->update('legalisir');
     if ($update) {
       echo "1";
     }

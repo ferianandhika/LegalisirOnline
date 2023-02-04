@@ -1,285 +1,158 @@
-<!-- <div class="page-header header-filter" data-parallax="true" style="background-color: chartreuse; height: 6cm;"></div> -->
-<div class="page-header header-filter" data-parallax="true"
-  style="background-image: url('<?php echo base_url() ?>assets/user/img/coba3.jpg'); height: 6cm;"></div>
-
-<div class="main main-raised">
-  <div class="profile-content">
-    <div class="container">
-      <div class="section text-center">
-        <h2 class="title">LEGALISIR</h2>
-      </div>
-
-
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-2 mx-auto">
-            <div class="card card-login">
-              <form class="form" method="POST" action="<?= base_url('user/legalisir/save'); ?>"
-                enctype="multipart/form-data">
-                <div class="card-header card-header-primary text-center">
-                  <h4 class="card-title">Legalisir Ijazah dan Transkrip Nilai</h4>
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background="">
+        </div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>Legalisir</h2>
+                <div class="page_link">
+                    <a href="<?= base_url('/user'); ?>">Home</a>
+                    <a href="#">Legalisir</a>
                 </div>
-                <h4 class="card-title text-center">Data Diri</h4>
-                <div class="card-body">
-                
-                  <input type="hidden" name="id_user" id="id_user" value="<?= $userr['id']; ?>">
-                  <div class="form-group bmd-form-group mx-5">
-                    <label for="nama" class="bmd-label-floating"></label>
-                    <input type="text" class="form-control" id="nama" name="nama" required readonly value="<?php echo $userr['name']; ?>"
-                      onkeypress="return event.charCode < 48 || event.charCode  >57">
-                    <small class="text-muted text-danger">Nama sesuai dengan ijasah kelulusan</small>
-                  </div>
-                  <div class="form-group bmd-form-group mx-5">
-                    <label for="email" class="bmd-label-floating">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required readonly value="<?php echo $userr['email']; ?>">
-                    <small class="text-muted text-danger">Email</small>
-                  </div>
-                  <div class="form-group bmd-form-group mx-5">
-                    <label class="bmd-label-floating">NIM</label>
-                    <input type="text" class="form-control" name="nim" maxlength="8" required readonly value="<?php echo $userr['nim']; ?>">
-                    <small class="text-muted text-danger">NIM sesuai dengan ijasah kelulusan</small>
-                  </div>
-                  <div class="form-group bmd-form-group mx-5">
-                    <label class="bmd-label-static">Jenis Kelamin</label>
-                    <div class="form-check form-check-radio form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="jk" id="inlineRadio1" value="Laki-Laki"> Laki
-                        - Laki
-                        <span class="circle">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                    <div class="form-check form-check-radio form-check-inline">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="jk" id="inlineRadio2" value="Perempuan">
-                        Perempuan
-                        <span class="circle">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="form-group mx-5">
-                    <label for="exampleFormControlTextarea1" class="bmd-label-floating">Alamat Lengkap</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alamat"
-                      required></textarea>
-                  </div>
-                  <div class="form-group bmd-form-group mx-5">
-                    <label class="bmd-label-floating">No HP</label>
-                    <input type="text" class="form-control" name="hp" maxlength="13" required
-                      onkeypress="return event.charCode >= 48 && event.charCode <=57">
-                  </div>
-
-                  <div class="form-group mx-5">
-                    <label for="exampleFormControlSelect1">Prodi</label>
-                    <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlSelect1"
-                      name="prodi">
-                      <option>-pilih prodi terkait-</option>
-                      <?php foreach ($prodi as $data) : ?>
-                      <option value="<?= $data['nama_prodi']; ?>"><?= $data['nama_prodi']; ?></option>
-                      <?php endforeach; ?>
-                    </select>
-                  </div>
-                  <div class="form-row mx-5">
-                    <div class="form-group col-md-6">
-                      <label for="inputEmail4" class="bmd-label-floating">Tahun Lulus</label>
-                      <input type="text" class="form-control" id="inputEmail4" name="tahun" required
-                        onkeypress="return event.charCode >= 48 && event.charCode <=57">
-                    </div>
-                    <div class="form-group col-md-6">
-                      <label for="inputPassword4" class="bmd-label-floating">No Ijazah</label>
-                      <input type="text" class="form-control" id="inputPassword4" name="ijazah" required>
-                    </div>
-                  </div>
-
-                </div>
-
             </div>
-          </div>
-          <div class="col-lg-12 col-md-2 mx-auto">
-            <div class="card card-login">
-              <h4 class="card-title text-center">Alamat Lengkap</h4>
-              <div class="card-body">
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+<section class="packages_area p_120">
+    <div class="container">
+        <div class="comment-form">
+            <h4 class="text-danger">Legalisir Ijazah dan Transkrip Nilai</h4>
+            <hr>
+            <form method="post" action="<?= base_url('user/legalisir/save'); ?>" enctype="multipart/form-data">
+                <input type="hidden" name="id_user" id="id_user" value="<?= $userr['id']; ?>">
+                <h4>Data Ijazah</h4>
+                <div class="form-group">
+                    <label for="">No Ijazah :</label>
+                    <input type="text" name="ijazah" placeholder="Masukan No Ijazah Anda"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan No Ijazah Anda'"
+                        class="single-input-primary">
+                    <small class="text-danger"><?= form_error('ijazah'); ?></small>
+                </div>
+                <h4>Alamat Pengiriman</h4>
                 <input type="hidden" id="origin" name="origin" value="<?php echo $gSetting->kota_pengiriman; ?>">
 
-                <!-- <div class="form-group bmd-form-group mx-5">
-                    <label class="bmd-label-floating">Privinsi</label>
-                    <input type="text" class="form-control">
-                  </div> -->
-                <div class="form-group bmd-form-group mx-5">
-                  <div class="form-group">
-                    <label>Provinsi</label>
-                    <select name="provinsi" id="provinsi" class="form-control"></select>
-                  </div>
-                </div>
-                <div class="form-group bmd-form-group mx-5">
-                  <div class="form-group">
-                    <label>Kota</label>
-                    <select name="kota" id="kota" class="form-control"></select>
-                  </div>
-                </div>
-                <input type="hidden" id="kabkot_name" name="kabkot_name">
-                <input type="hidden" id="prov_name" name="prov_name">
-                <div class="form-group bmd-form-group mx-5">
-                  <label class="bmd-label-floating">Kelurahan</label>
-                  <input type="text" name="kelurahan" id="kelurahan" class="form-control">
-                </div>
-
-                <div class="form-group bmd-form-group mx-5">
-                  <select class="form-control" name="courier" id="courier" onchange="tampil_biaya()">
-                    <option value="" disabled="disabled" selected="selected">Pilih Kurir</option>
-                    <option value="jne">JNE</option>
-                    <option value="pos">POS</option>
-                    <option value="tiki">TIKI</option>
-                  </select>
-                </div>
-
-                <div class="form-group bmd-form-group mx-5">
-                  <select class="form-control" name="harga" id="harga">
-                    <option value="" disabled="disabled" selected="selected">Pilih Jenis Harga</option>
-                  </select>
-                </div>
-                <!-- <div class="form-row mx-5">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4" class="bmd-label-floating">Tahun Lulus</label>
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4" class="bmd-label-floating">No Ijazah</label>
-                    <input type="text" class="form-control" id="inputText">
-                  </div>
-                </div> -->
-
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-2 mx-auto">
-            <div class="card card-login">
-              <h4 class="card-title text-center">File Ijazah dan Transkip Nilai</h4>
-              <div class="card-body">
-
-                <!-- <div class="form-group form-file-upload form-file-multiple">
-                  <label class="bmd-label-static">File Ijazah</label>
-                  <input type="file" multiple="" class="inputFileHidden">
-                  <div class="input-group">
-                    <input type="text" class="form-control inputFileVisible col-md-11"
-                      placeholder="File Fotocopy Ijazah">
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-fab btn-round btn-primary">
-                        <i class="material-icons">attach_file</i>
-                      </button>
-                    </span>
-                  </div>
-                </div> -->
-
-                <div class="mb-3">
-                  <label for="formFile" class="form-label">File Ijazah</label>
-                  <input class="form-control" type="file" name="fileijazah">
-                </div>
-
-
-                <br>
-                <!-- <div class="form-group form-file-upload form-file-multiple">
-                  <label class="bmd-label-static">File Trankrip</label>
-                  <input type="file" multiple="" class="inputFileHidden">
-                  <div class="input-group">
-                    <input type="text" class="form-control inputFileVisible col-md-11"
-                      placeholder="File Fotocopy Transkrip">
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-fab btn-round btn-primary">
-                        <i class="material-icons">attach_file</i>
-                      </button>
-                    </span>
-                  </div>
-                </div> -->
-                <div class="mb-3">
-                  <label for="formFile" class="form-label">File Transkrip</label>
-                  <input class="form-control" type="file" name="filetranskrip">
-                </div>
-
-                <div class="form-row mx-5">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4" class="bmd-label-floating">Jumlah Legalisir Ijazah</label>
-                    <input type="text" class="form-control" name="jmlijazah" id="jmlijazah"
-                      onkeyup="hitung_total_legalisir()"
-                      onkeypress="return event.charCode >= 48 && event.charCode <=57">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4" class="bmd-label-floating">Jumlah Legalisir Transkrip</label>
-                    <input type="text" class="form-control" name="jmltranskrip" id="jmltranskrip"
-                      onkeyup="hitung_total_legalisir()"
-                      onkeypress="return event.charCode >= 48 && event.charCode <=57">
-                  </div>
-                </div>
-                <input class="form-control" id="harga_per_lembar" name="harga_per_lembar" type="hidden"
-                  value="<?php echo $gSetting->harga_perlembar; ?>">
                 <div class="form-group">
-                  <input class="form-control" type="text" id="total_legalisir" name="total_legalisir"
-                    readonly="readonly">
+                    <label for="">Opsi Pengiriman :</label>
+                    <div class="single-input-primary">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="option" id="pilihan1"
+                                value="kirim ke alamat tujuan">
+                            <label class="form-check-label" for="pilihan1">Kirim ke rumah</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="option" id="pilihan2"
+                                value="ambil sendiri ke kampus">
+                            <label class="form-check-label" for="pilihan2">Ambil Sendiri</label>
+                        </div>
+                    </div>
+                    <small class="text-danger"><?= form_error('option'); ?></small>
                 </div>
-
-                <div class="form-group">
-                  <label for="exampleFormControlTextarea1" class="bmd-label-floating">Alasan Kebutuhan Legalisir</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="alasan"></textarea>
-                </div>
-
-
-
-                .<div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="option" id="pilihan1"
-                        value="kirim ke alamat tujuan">
-                      Kirim ke rumah
-                      <span class="circle">
-                        <span class="check"></span>
-                      </span>
-                    </label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="radio" name="option" id="pilihan2"
-                        value="ambil sendiri ke kampus">
-                      Ambil Sendiri
-                      <span class="circle">
-                        <span class="check"></span>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-
                 <!-- show hide -->
-                <div class="card text-white bg-primary" id="kirimpaket" style="display: none;">
-                  <div class="card-body">
-                    <h4 class="card-title">Kirim Paket</h4>
-                    <p class="card-text">Paket akan di kirim ke alamat tujuan</p>
-                  </div>
+                <div id="kirimpaket" style="display: none;">
+                    <div class="form-group form-row">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>Provinsi</label>
+                                <select name="provinsi" id="provinsi" class="form-control"></select>
+                                <small class="text-danger"><?= form_error('provinsi'); ?></small>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <label>Kota</label>
+                                <select name="kota" id="kota" class="form-control"></select>
+                                <small class="text-danger"><?= form_error('kota'); ?></small>
+                            </div>
+                        </div>
+                        <input type="hidden" id="kabkot_name" name="kabkot_name">
+                        <input type="hidden" id="prov_name" name="prov_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Kelurahan :</label>
+                        <textarea class="single-textarea" placeholder="Masukan Kelurahan Anda" name="kelurahan"
+                            id="kelurahan" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Masukan Kelurahan Anda'"></textarea>
+                        <small class="text-danger"><?= form_error('kelurahan'); ?></small>
+                    </div>
+                    <div class="form-group form-row">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label for="">Expedisi</label>
+                            <select name="courier" id="courier" class="form-control" onchange="tampil_biaya()">
+                                <option value="" disabled="disabled" selected="selected">~Pilih Kurir~</option>
+                                <option value="jne">JNE</option>
+                                <option value="pos">POS</option>
+                                <option value="tiki">TIKI</option>
+                            </select>
+                            <small class="text-danger"><?= form_error('courier'); ?></small>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label for="">Harga</label>
+                            <select name="harga" id="harga" class="form-control">
+                                <option value="" disabled="disabled" selected="selected">~Pilih Harga~</option>
+                            </select>
+                            <small class="text-danger"><?= form_error('harga'); ?></small>
+                        </div>
+                    </div>
                 </div>
-                <div class="card text-white bg-primary" id="ambilsendiri" style="display: none;">
-                  <div class="card-body">
-                    <h4 class="card-title">Ambil Sendiri</h4>
-                    <p class="card-text">Silahkan datang ke kampus untuk ambil berkas</p>
-                  </div>
+                <div class="card bg-warning mb-3" id="ambilsendiri" style="display: none;">
+                    <div class="card-body">
+                        <h5 class="card-title">Alamat Kampus</h5>
+                        <p class="card-text">Jl. Mataram No.9, Kel. pesurungan lor, Kel. Pesurungan Lor, Pesurungan Lor,
+                            Kec. Margadana, Kota Tegal, Jawa Tengah</p>
+                    </div>
                 </div>
                 <!-- end show hide -->
-              </div>
-            </div>
-          </div>
+                <h4>File Ijazah dan Transkip Nilai</h4>
+                <div class="form-group">
+                    <label for="">File Ijazah :</label>
+                    <input type="file" name="fileijazah" class="single-input-primary">
+                    <small class="text-danger"><?= form_error('fileijazah'); ?></small>
+                </div>
+                <div class="form-group">
+                    <label for="">File Transkip :</label>
+                    <input type="file" name="filetranskrip" class="single-input-primary">
+                    <small class="text-danger"><?= form_error('filetranskrip'); ?></small>
+                </div>
+                <div class="form-group form-row">
+                    <div class="form-group col-lg-4 col-md-6">
+                        <label for="">Jumlah Legalisir Ijazah :</label>
+                        <input type="text" placeholder="Masukan Jumlah Legalisir Ijazah Anda"
+                            onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Masukan Jumlah Legalisir Ijazah Anda'"
+                            class="single-input-primary" name="jmlijazah" id="jmlijazah"
+                            onkeyup="hitung_total_legalisir()">
+                        <small class="text-danger"><?= form_error('jmlijazah'); ?></small>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-6">
+                        <label for="">Jumlah Legalisir Transkrip :</label>
+                        <input type="text" placeholder="Masukan Jumlah Legalisir Transkrip Ijazah Anda"
+                            onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Masukan Jumlah Legalisir Transkrip Ijazah Anda'"
+                            class="single-input-primary" name="jmltranskrip" id="jmltranskrip"
+                            onkeyup="hitung_total_legalisir()">
+                        <small class="text-danger"><?= form_error('jmltranskrip'); ?></small>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-6">
+                        <label for="">Total Harga Legalisir</label>
+                        <input type="text" class="single-input-primary" id="total_legalisir" name="total_legalisir"
+                            readonly>
+                        <small class="text-danger"><?= form_error('total_legalisir'); ?></small>
+                    </div>
+                </div>
+                <input class="form-control" id="harga_per_lembar" name="harga_per_lembar" type="hidden"
+                    value="<?php echo $gSetting->harga_perlembar; ?>">
+                <div class="form-group">
+                    <label for="">Alasan Kebutuhan Legalisir :</label>
+                    <textarea class="single-textarea" placeholder="Masukan Alasan Anda" name="alasan" id="alasan"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan Alasan Anda'"></textarea>
+                    <small class="text-danger"><?= form_error('alasan'); ?></small>
+                </div>
+
+                <button type="submit" class="genric-btn info circle">Simpan</button>
+                <a href="<?= base_url('user'); ?>" class="genric-btn info-border circle">Kembali</a>
+            </form>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4 ml-auto mr-auto text-center">
-          <button class="btn btn-primary btn-round">Simpan</button>
-        </div>
-      </div>
-      <br>
-
-      </form>
-
-
     </div>
-  </div>
-</div>
+</section>
