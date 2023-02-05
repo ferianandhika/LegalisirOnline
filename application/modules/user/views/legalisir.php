@@ -25,7 +25,7 @@
                 <h4>Data Ijazah</h4>
                 <div class="form-group">
                     <label for="">No Ijazah :</label>
-                    <input type="text" name="ijazah" placeholder="Masukan No Ijazah Anda"
+                    <input style="background-color: #F5F5F5" type="text" name="ijazah" placeholder="Masukan No Ijazah Anda"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan No Ijazah Anda'"
                         class="single-input-primary">
                     <small class="text-danger"><?= form_error('ijazah'); ?></small>
@@ -50,19 +50,19 @@
                     <small class="text-danger"><?= form_error('option'); ?></small>
                 </div>
                 <!-- show hide -->
-                <div id="kirimpaket" style="display: none;">
+                <div class="card bg-light mb-3" id="kirimpaket" style="display: none;">
                     <div class="form-group form-row">
                         <div class="form-group col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Provinsi</label>
-                                <select name="provinsi" id="provinsi" class="form-control"></select>
+                                <select style="background-color: #F5F5F5"name="provinsi" id="provinsi" class="form-control"></select>
                                 <small class="text-danger"><?= form_error('provinsi'); ?></small>
                             </div>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label>Kota</label>
-                                <select name="kota" id="kota" class="form-control"></select>
+                                <select style="background-color: #F5F5F5"name="kota" id="kota" class="form-control"></select>
                                 <small class="text-danger"><?= form_error('kota'); ?></small>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Kelurahan :</label>
-                        <textarea class="single-textarea" placeholder="Masukan Kelurahan Anda" name="kelurahan"
+                        <textarea style="background-color: #F5F5F5" class="single-textarea" placeholder="Masukan Kelurahan Anda" name="kelurahan"
                             id="kelurahan" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Masukan Kelurahan Anda'"></textarea>
                         <small class="text-danger"><?= form_error('kelurahan'); ?></small>
@@ -79,7 +79,7 @@
                     <div class="form-group form-row">
                         <div class="form-group col-lg-6 col-md-6">
                             <label for="">Expedisi</label>
-                            <select name="courier" id="courier" class="form-control" onchange="tampil_biaya()">
+                            <select style="background-color: #F5F5F5" name="courier" id="courier" class="form-control" onchange="tampil_biaya()">
                                 <option value="" disabled="disabled" selected="selected">~Pilih Kurir~</option>
                                 <option value="jne">JNE</option>
                                 <option value="pos">POS</option>
@@ -89,14 +89,14 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <label for="">Harga</label>
-                            <select name="harga" id="harga" class="form-control">
+                            <select style="background-color: #F5F5F5" name="harga" id="harga" class="form-control">
                                 <option value="" disabled="disabled" selected="selected">~Pilih Harga~</option>
                             </select>
                             <small class="text-danger"><?= form_error('harga'); ?></small>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-warning mb-3" id="ambilsendiri" style="display: none;">
+                <div class="card bg-light mb-3" id="ambilsendiri" style="display: none;">
                     <div class="card-body">
                         <h5 class="card-title">Alamat Kampus</h5>
                         <p class="card-text">Jl. Mataram No.9, Kel. pesurungan lor, Kel. Pesurungan Lor, Pesurungan Lor,
@@ -118,7 +118,7 @@
                 <div class="form-group form-row">
                     <div class="form-group col-lg-4 col-md-6">
                         <label for="">Jumlah Legalisir Ijazah :</label>
-                        <input type="text" placeholder="Masukan Jumlah Legalisir Ijazah Anda"
+                        <input style="background-color: #F5F5F5" type="text" placeholder="Masukan Jumlah Legalisir Ijazah Anda"
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Masukan Jumlah Legalisir Ijazah Anda'"
                             class="single-input-primary" name="jmlijazah" id="jmlijazah"
@@ -127,7 +127,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-6">
                         <label for="">Jumlah Legalisir Transkrip :</label>
-                        <input type="text" placeholder="Masukan Jumlah Legalisir Transkrip Ijazah Anda"
+                        <input style="background-color: #F5F5F5" type="text" placeholder="Masukan Jumlah Legalisir Transkrip Ijazah Anda"
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Masukan Jumlah Legalisir Transkrip Ijazah Anda'"
                             class="single-input-primary" name="jmltranskrip" id="jmltranskrip"
@@ -136,7 +136,7 @@
                     </div>
                     <div class="form-group col-lg-4 col-md-6">
                         <label for="">Total Harga Legalisir</label>
-                        <input type="text" class="single-input-primary" id="total_legalisir" name="total_legalisir"
+                        <input style="background-color: #F5F5F5" type="text" class="single-input-primary" id="total_legalisir" name="total_legalisir"
                             readonly>
                         <small class="text-danger"><?= form_error('total_legalisir'); ?></small>
                     </div>
@@ -145,13 +145,13 @@
                     value="<?php echo $gSetting->harga_perlembar; ?>">
                 <div class="form-group">
                     <label for="">Alasan Kebutuhan Legalisir :</label>
-                    <textarea class="single-textarea" placeholder="Masukan Alasan Anda" name="alasan" id="alasan"
+                    <textarea style="background-color: #F5F5F5" class="single-textarea" placeholder="Masukan Alasan Anda" name="alasan" id="alasan"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan Alasan Anda'"></textarea>
                     <small class="text-danger"><?= form_error('alasan'); ?></small>
                 </div>
 
-                <button type="submit" class="genric-btn info circle">Simpan</button>
-                <a href="<?= base_url('user'); ?>" class="genric-btn info-border circle">Kembali</a>
+                <button type="submit" class="genric-btn info-border circle circle">Simpan</button>
+                <a href="<?= base_url('user'); ?>" class="genric-btn danger-border circle">Kembali</a>
             </form>
         </div>
     </div>

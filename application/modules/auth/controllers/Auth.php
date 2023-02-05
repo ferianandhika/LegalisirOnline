@@ -128,6 +128,8 @@ class Auth extends CI_Controller
     $this->load->library('email', $config);
     $this->email->set_newline("\r\n");
 
+    
+    // $this->email->from('ferianandhika.fa98@gmail.com', 'Politeknik Harapan Bersama TEGAL');
     $this->email->from('infotkptegal@gmail.com', 'Politeknik Harapan Bersama TEGAL');
     $this->email->to($this->input->post('email'));
 

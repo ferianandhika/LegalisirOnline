@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Legalisir extends CI_Controller
+class Legalisir2 extends CI_Controller
 {
   public function __construct()
   {
@@ -9,7 +9,7 @@ class Legalisir extends CI_Controller
     $this->load->library('veritrans');
     $this->veritrans->config($params);
     $this->load->helper('url');
-    $this->load->model("M_legalisir");
+    $this->load->model("M_legalisir2");
 
     is_logged_in();
   }
@@ -20,20 +20,20 @@ class Legalisir extends CI_Controller
     $data['judul'] = 'Halaman Legalisir';
     $data['userr'] = $this->db->get_where('user', ['email' =>
     $this->session->userdata('email')])->row_array();
-    $data['legalisir'] = $this->M_legalisir->getAll();
-    $datas = $this->M_legalisir->getAll();
+    $data['legalisir'] = $this->M_legalisir2->getAll();
+    $datas = $this->M_legalisir2->getAll();
 
     foreach ($datas as $dataa) {
       if ($dataa->order_id != "" && $dataa->status_midtrans == 'pending') {
         $data_m = $this->veritrans->status($dataa->order_id);
-        $update_tm = $this->db->set('status_midtrans', $data_m->transaction_status)->where('id_legalisir', $dataa->id_legalisir)->update('legalisir');
+        $update_tm = $this->db->set('status_midtrans', $data_m->transaction_status)->where('id_legalisir', $dataa->id_legalisir)->update('legalisir2');
       }
     }
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/topbar');
     $this->load->view('templates/sidebar', $data);
-    $this->load->view('admin/legalisir', $data);
+    $this->load->view('admin/legalisir2', $data);
     $this->load->view('templates/rightbar');
     $this->load->view('templates/footer');
   }
@@ -41,7 +41,7 @@ class Legalisir extends CI_Controller
   public function showDetail()
   {
     $id = $this->input->post('id');
-    $row = $this->M_legalisir->getDetailStatus($id);
+    $row = $this->M_legalisir2->getDetailStatus($id);
     if ($row->status_midtrans == 'settlement') {
       $st_mid = "<span class='badge badge-primary'>Sudah Dibayar</span>"; 
     }elseif ($row->status_midtrans == 'expire'){
@@ -94,32 +94,21 @@ class Legalisir extends CI_Controller
 
   private function _sendEmail($id, $email, $jenis)
   {
-    // $config = [
-    //   'protocol' => 'smtp',
-    //   'smtp_host' => 'ssl://smtp.googlemail.com',
-    //   'smtp_user' => 'ferianandhika.fa98@gmail.com',
-    //   'smtp_pass' => 'ferian123',
-    //   'smtp_port' => 465,
-    //   'mailtype' => 'html',
-    //   'charset' => 'utf-8',
-    //   'newline' => "\r\n"
-    // ];
     $config = [
       'protocol' => 'smtp',
-      'smtp_host' => 'ssl://smtp.gmail.com',
+      'smtp_host' => 'ssl://smtp.googlemail.com',
+      'smtp_user' => 'ferianandhika.fa98@gmail.com',
+      'smtp_pass' => 'ferian123',
       'smtp_port' => 465,
-      'smtp_user' => 'infotkptegal@gmail.com',
-      'smtp_pass' => 'tcbjdpzqssmasnip',
       'mailtype' => 'html',
-      'charset' => 'iso-8859-1',
+      'charset' => 'utf-8',
       'newline' => "\r\n"
     ];
 
     $this->load->library('email', $config);
     $this->load->initialize($config);
-    //$this->email->set_newline("\r\n");
 
-    $this->email->from('infotkptegal@gmail.com', 'Politeknik Harapan Bersama TEGAL');
+    $this->email->from('ferianandhika.fa98@gmail.com', 'Politeknik Harapan Bersama TEGAL');
     $this->email->to($email);
 
     $this->email->subject('Status Transaksi Anda');
@@ -174,8 +163,8 @@ class Legalisir extends CI_Controller
   {
     $id = $this->input->post('id');
     $status = $this->input->post('status');
-    $getData = $this->db->where('id_legalisir', $id)->get('legalisir')->row();
-    $update = $this->db->set('status', $status)->where('id_legalisir', $id)->update('legalisir');
+    $getData = $this->db->where('id_legalisir', $id)->get('legalisir2')->row();
+    $update = $this->db->set('status', $status)->where('id_legalisir2', $id)->update('legalisir2');
     if ($update) {
       // $this->_sendEmail($id, $getData->email, $status);
       echo "1";
