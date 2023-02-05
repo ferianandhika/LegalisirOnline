@@ -110,8 +110,8 @@ class Auth extends CI_Controller
       'protocol' => 'smtp',
       'smtp_host' => 'ssl://smtp.gmail.com',
       'smtp_port' => 465,
-      'smtp_user' => 'ferianandhika.fa98@gmail.com',
-      'smtp_pass' => 'hkhdrhrwqqiqoejg',
+      'smtp_user' => 'infotkptegal@gmail.com',
+      'smtp_pass' => 'tcbjdpzqssmasnip',
       'mailtype' => 'html',
       'charset' => 'iso-8859-1',
     ];
@@ -119,7 +119,7 @@ class Auth extends CI_Controller
     $this->load->library('email', $config);
     $this->email->set_newline("\r\n");
 
-    $this->email->from('ferianandhika.fa98@gmail.com', 'Politeknik Harapan Bersama TEGAL');
+    $this->email->from('infotkptegal@gmail.com', 'Politeknik Harapan Bersama TEGAL');
     $this->email->to($this->input->post('email'));
 
     if ($type == 'verify') {
