@@ -36,7 +36,7 @@
             </li>
 
             <li>
-              <a href="<?php echo base_url() ?>admin/prodi" class="waves-effect"><i class="mdi mdi-apps"></i> <span>
+              <a href="<?php echo base_url() ?>admin/prodi" class="waves-effect"><i class="mdi mdi-braille"></i> <span>
                   Prodi </span> </a>
             </li>
 
@@ -80,10 +80,19 @@
             </li> -->
 
             <li class="has_sub">
+              <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-texture"></i><span>Legalisir</span> <span
+                  class="menu-arrow"></span></a>
+              <ul class="list-unstyled">
+                <li><a href="<?php echo base_url() ?>admin/legalisir">Proses Legalisir</a></li>
+                <li><a href="<?php echo base_url() ?>admin/legalisir2">Data Legalisir</a></li>
+              </ul>
+            </li>
+            <!-- <li class="has_sub">
               <a href="<?php echo base_url() ?>admin/legalisir" class="waves-effect"><i
                   class="mdi mdi-texture"></i><span> Legalisir
                 </span> </a>
-              <!-- <ul class="list-unstyled">
+
+              <ul class="list-unstyled">
                 <li><a href="form-elements.html">General Elements</a></li>
                 <li><a href="form-advanced.html">Advanced Form</a></li>
                 <li><a href="form-validation.html">Form Validation</a></li>
@@ -91,8 +100,8 @@
                 <li><a href="form-fileupload.html">Form Uploads</a></li>
                 <li><a href="form-wysiwig.html">Wysiwig Editors</a></li>
                 <li><a href="form-xeditable.html">X-editable</a></li>
-              </ul> -->
-            </li>
+              </ul>
+            </li> -->
 
             <!-- <li class="has_sub">
               <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-list"></i> <span> Tables </span> <span class="menu-arrow"></span></a>

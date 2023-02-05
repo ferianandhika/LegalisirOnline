@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_legalisir extends CI_Model
+class M_legalisir2 extends CI_Model
 {
 
   private $table = "legalisir";
@@ -13,8 +13,8 @@ class M_legalisir extends CI_Model
         $this->db->from('legalisir');
         $this->db->join('user', 'user.id = legalisir.id_user');
         $this->db->join('prodi', 'prodi.id_prodi = user.id_prodi');
-        $this->db->where('legalisir.status <> 3');
-        $this->db->order_by('legalisir.created_at','DESC');
+        $this->db->where('legalisir.delivery_status = 1');
+        $this->db->where('legalisir.status = 3');
         return $this->db->get()->result();
   }
 

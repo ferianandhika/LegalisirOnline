@@ -37,7 +37,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active"><a class="nav-link" href="<?= base_url('user'); ?>">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= base_url('user'); ?>">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('user/legalisir'); ?>">Legalisir</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('user/status'); ?>">Status</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= base_url('user/profil'); ?>">Profil</a></li>
