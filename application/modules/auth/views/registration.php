@@ -52,23 +52,22 @@
               <?= form_error('nim', '<small class="text-danger">', '</small>'); ?>
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="col-xs-12">
               <input class="form-control" type="text" id="prodi" name="prodi" placeholder="Prodi"
                 value="<?= set_value('prodi'); ?>">
-              <?= form_error('prodi', '<small class="text-danger">', '</small>'); ?>
+              
             </div>
-          </div>
-          <!-- <div class="form-group mx-5">
-            <label for="exampleFormControlSelect1">Prodi</label>
-            <select class="form-control selectpicker" data-style="btn btn-link" id="exampleFormControlSelect1"
-              name="prodi">
-              <option>-pilih prodi terkait-</option>
+          </div> -->
+          <div class="form-group col-xs-12">
+            <select class="form-control" id="prodi" name="prodi">
+              <option>~Pilih Prodi~</option>
               <?php foreach ($prodi as $data) : ?>
-              <option value="<?= $data['nama_prodi']; ?>"><?= $data['nama_prodi']; ?></option>
+                <option value="<?= $data['id_prodi']; ?>"><?= $data['nama_prodi']; ?></option>
               <?php endforeach; ?>
             </select>
-          </div> -->
+            <?= form_error('prodi', '<small class="text-danger">', '</small>'); ?>
+          </div>
           <div class="form-group">
             <div class="col-xs-12">
               <input class="form-control" type="text" id="angkatan" name="angkatan" placeholder="Angkatan"
@@ -85,6 +84,7 @@
           <div class="form-group">
             <div class="col-xs-6">
               <input class="form-control" type="password" id="password1" name="password2" placeholder="Repeat Password">
+              <?= form_error('password2', '<small class="text-danger">', '</small>'); ?>
             </div>
           </div>
 

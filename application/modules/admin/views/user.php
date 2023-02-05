@@ -13,12 +13,11 @@
                 <h4 class="m-t-0 header-title">Data User</h4>
                 <hr>
 
-                <table id="datatable" class="table table-bordered">
+                <table id="key-table" class="table table-bordered">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>Username</th>
-                      <th>Password</th>
                       <th>Email</th>
                       <th>Level</th>
                       <th>Opsi</th>
@@ -32,7 +31,6 @@
                       ?>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $row->name; ?></td>
-                        <td><?php echo $row->password; ?></td>
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo $row->role_name;?></td>
                         <td>
@@ -43,7 +41,6 @@
                   <?php
                       }
                   ?>
-
                   </tbody>
                 </table>
               </div>

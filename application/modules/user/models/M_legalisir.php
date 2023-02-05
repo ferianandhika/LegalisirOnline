@@ -30,7 +30,11 @@ class M_legalisir extends CI_Model
     //devanda functions
 
     public function getByIdDev($id){
-        return $this->db->where('id_legalisir',$id)->get($this->table);
+        $this->db->select('*');
+        $this->db->from('legalisir');
+        $this->db->join('user', 'user.id = legalisir.id_user');
+        $this->db->where('legalisir.id_legalisir',$id);
+        return $this->db->get();
     }
 
     public function getCityByid($id){
@@ -39,6 +43,26 @@ class M_legalisir extends CI_Model
 
     public function getSetting(){
         return $this->db->get('setting')->row();
+    }
+
+    public function getStatus($id)
+    {
+        $this->db->select('*');
+        $this->db->from('legalisir');
+        $this->db->join('user', 'user.id = legalisir.id_user');
+        $this->db->join('prodi', 'prodi.id_prodi = user.id_prodi');
+        $this->db->where('legalisir.id_user', $id);
+        return $this->db->get()->result();
+    }
+
+    public function getDetailStatus($id)
+    {
+        $this->db->select('*');
+        $this->db->from('legalisir');
+        $this->db->join('user', 'user.id = legalisir.id_user');
+        $this->db->join('prodi', 'prodi.id_prodi = user.id_prodi');
+        $this->db->where('legalisir.id_legalisir', $id);
+        return $this->db->get()->row();
     }
 }
 

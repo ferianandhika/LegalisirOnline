@@ -16,11 +16,10 @@ class User extends CI_Controller
     $this->session->userdata('email')])->row_array();
 
     // $data['informasi'] = $this->M_dashboard->getById($id);
-    $data['informasi'] = $this->M_dashboard->getInformasi();
-    $data['judul'] = 'Halaman Home | SIMALEJA';
-    $this->load->view('templates/header', $data);
-    $this->load->view('templates/navbar');
-    $this->load->view('user/dashboard', $data);
-    $this->load->view('templates/footer');
+    // $data['informasi'] = $this->M_dashboard->getInformasi();
+    $data['prodi'] = $this->M_dashboard->getProdi();
+    $data['judul'] = 'SIMALEJA | PHB';
+    $data['content'] = 'dashboard';
+    $this->load->view('templates/layouts', $data);
   }
 }
