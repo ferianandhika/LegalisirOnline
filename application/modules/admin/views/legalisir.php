@@ -14,13 +14,14 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Tanggal Pengajuan</th>
                                         <th>Nama Lengkap</th>
                                         <th>Prodi</th>
-                                        <th>Status</th>
+                                        <th>Status Transaksi</th>
                                         <th>File Ijazah</th>
                                         <th>File Transkrip</th>
                                         <th>Dokumen</th>
-                                        <th>Status</th>
+                                        <th>Status Legalisir</th>
                                         <th>Opsi</th>
                                     </tr>
                                 </thead>
@@ -31,6 +32,7 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
+                                        <td><?=  date("d-m-Y", strtotime($row->created_at)) ?></td>
                                         <td><?php echo $row->name; ?></td>
                                         <td><?php echo $row->nama_prodi; ?></td>
                                         <td>
@@ -43,12 +45,12 @@
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary"
+                                            <a class="btn btn-primary btn-sm"
                                                 href="<?php echo base_url('upload/'.$row->file_ijazah.'');?>"
                                                 target="_blank">Download Ijazah</a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success"
+                                            <a class="btn btn-success btn-sm"
                                                 href="<?php echo base_url('upload/'.$row->file_transkrip.'');?>"
                                                 target="_blank">Download Transkrip</a>
                                         </td>
@@ -66,24 +68,31 @@
                                                 onchange="ubahStatus(<?php echo $row->id_legalisir; ?>)">
                                                 <option value="" disabled="disabled" selected="selected">Pilih Status
                                                 </option>
-                                                <option value="1" <?= $row->status == 1 ? ' selected="selected"' : '';?>>Diproses
+                                                <option value="1"
+                                                    <?= $row->status == 1 ? ' selected="selected"' : '';?>>Diproses
                                                 </option>
-                                                <option value="2" <?= $row->status == 2 ? ' selected="selected"' : '';?>>Dikirim
+                                                <option value="2"
+                                                    <?= $row->status == 2 ? ' selected="selected"' : '';?>>Dikirim
                                                 </option>
-                                                <option value="3" <?= $row->status == 3 ? ' selected="selected"' : '';?>>Selesai
+                                                <option value="3"
+                                                    <?= $row->status == 3 ? ' selected="selected"' : '';?>>Selesai
                                                 </option>
                                             </select>
                                             <?php else : ?>
-                                              <select disabled class="form-control" name="status_<?php echo $row->id_legalisir;?>"
+                                            <select disabled class="form-control"
+                                                name="status_<?php echo $row->id_legalisir;?>"
                                                 id="status_<?php echo $row->id_legalisir;?>"
                                                 onchange="ubahStatus(<?php echo $row->id_legalisir; ?>)">
                                                 <option value="" disabled="disabled" selected="selected">Pilih Status
                                                 </option>
-                                                <option value="1" <?= $row->status == 1 ? ' selected="selected"' : '';?>>Diproses
+                                                <option value="1"
+                                                    <?= $row->status == 1 ? ' selected="selected"' : '';?>>Diproses
                                                 </option>
-                                                <option value="2" <?= $row->status == 2 ? ' selected="selected"' : '';?>>Dikirim
+                                                <option value="2"
+                                                    <?= $row->status == 2 ? ' selected="selected"' : '';?>>Dikirim
                                                 </option>
-                                                <option value="3" <?= $row->status == 3 ? ' selected="selected"' : '';?>>Selesai
+                                                <option value="3"
+                                                    <?= $row->status == 3 ? ' selected="selected"' : '';?>>Selesai
                                                 </option>
                                             </select>
                                             <?php endif;  ?>
@@ -126,31 +135,8 @@
 
         <script type="text/javascript">
         var base_url = "<?php echo base_url() ?>";
-        // $('#datatable').DataTable( {
-        //  dom: 'Bfrtip',
-        //  buttons: [
-        //      'excel', 'pdf', 'print'
-        //  ]
 
-        //} );
-        $('#key-table').DataTable({
-            dom: 'Bfrtip',
-            buttons: [{
-                    extend: 'excelHtml5',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3]
-                    },
-                },
-                {
-                    extend: 'pdfHtml5',
-                    orientation: 'landscape',
-                    pageSize: 'LEGAL',
-                    exportOptions: {
-                        columns: [0, 1, 2, 3]
-                    },
-                },
-            ]
-        });
+        $('#key-table').DataTable({});
 
         function ubahStatus(id) {
             var status = $('#status_' + id).val();

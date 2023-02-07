@@ -73,23 +73,24 @@
   <!--================End Finance Area =================-->
 
   <!--================Courses Area =================-->
-  <section class="courses_area p_120">
+  <section class="mt-25">
       <div class="container">
           <div class="main_title">
-              <h2>Program Studi</h2>
+              <h2>PROGRAM STUDI</h2>
               <p>Beberapa program studi yang ada di Politeknik Harapan Bersama Tegal</p>
           </div>
           <div class="row courses_inner">
               <?php foreach ($prodi as $data) : ?>
               <div class="col-lg-4">
                   <div class="grid_inner">
-                      <div class="card mb-3 mr-2" style="max-width: 540px; background-color: <?= $data['warna']; ?>;" >
+                      <div class="card mb-3 mr-2" style="max-width: 540px; background-color: <?= $data['warna']; ?>;">
                           <div class="row no-gutters">
                               <div class="col-md-4">
-                                  <img src="<?= base_url() ?>upload/prodi/<?= $data['gambar']; ?>" class="card-img img-thumbnail" alt="...">
+                                  <img src="<?= base_url() ?>upload/prodi/<?= $data['gambar']; ?>"
+                                      class="card-img img-thumbnail" alt="...">
                               </div>
-                              <div class="col-md-8" >
-                                  <div class="card-body" >
+                              <div class="col-md-8">
+                                  <div class="card-body">
                                       <h5 class="card-title text-white"><?= $data['nama_prodi']; ?></h5>
                                       <!-- <p class="card-text">This is a wider card with supporting text below as a natural
                                           lead-in to additional content. This content is a little bit longer.</p>
@@ -101,6 +102,21 @@
                   </div>
               </div>
               <?php endforeach; ?>
+          </div>
+      </div>
+  </section>
+  <section class="py-5">
+      <div class="container">
+          <div class="main_title">
+              <h2>INFORMASI</h2>
+              <p>Tentang Politeknik Harapan Bersama Tegal</p>
+          </div>
+          <div class="courses_inner">
+              <div class="card">
+                  <div class="card-body">
+                      <p class="card-text text-justify"><?= $informasi->teks; ?></p>
+                  </div>
+              </div>
           </div>
       </div>
   </section>

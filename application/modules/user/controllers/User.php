@@ -18,6 +18,7 @@ class User extends CI_Controller
     // $data['informasi'] = $this->M_dashboard->getById($id);
     // $data['informasi'] = $this->M_dashboard->getInformasi();
     $data['prodi'] = $this->M_dashboard->getProdi();
+    $data['informasi'] = $this->db->get('informasi')->row();
     $data['judul'] = 'SIMALEJA | PHB';
     $data['content'] = 'dashboard';
     $this->load->view('templates/layouts', $data);

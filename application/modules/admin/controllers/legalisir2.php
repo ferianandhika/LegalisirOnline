@@ -21,6 +21,7 @@ class Legalisir2 extends CI_Controller
     $data['userr'] = $this->db->get_where('user', ['email' =>
     $this->session->userdata('email')])->row_array();
     $data['legalisir'] = $this->M_legalisir2->getAll();
+    $data['prodi'] = $this->db->get('prodi')->result_array();
     $datas = $this->M_legalisir2->getAll();
 
     foreach ($datas as $dataa) {
@@ -36,6 +37,37 @@ class Legalisir2 extends CI_Controller
     $this->load->view('admin/legalisir2', $data);
     $this->load->view('templates/rightbar');
     $this->load->view('templates/footer');
+  }
+  
+  public function filter()
+  {
+    $filter = $this->input->post('filter');
+    if ($filter == "1") {
+        $prodi = $this->input->post('prodi');
+        $data['laporan'] = $this->M_legalisir2->getExportByProdi($prodi);
+        $data['prodi'] = $this->db->get_where('prodi', ['id_prodi' => $prodi])->row();
+        if (count($data['laporan']) > 0) {
+          $this->load->view('admin/laporan_legalisir', $data);
+        }else{
+          echo "<script>
+              alert('Data Tidak Ada');
+              window.location.href='" . base_url("admin/legalisir2") . "';
+          </script>";
+      } 
+    }else{
+        $tgl_awal = $this->input->post('tgl_awal');
+        $tgl_akhir = $this->input->post('tgl_akhir');
+        $data['laporan'] = $this->M_legalisir2->getExportByTanggal($tgl_awal,$tgl_akhir);
+        $data['tanggal'] = [$tgl_awal, $tgl_akhir];
+        if (count($data['laporan']) > 0) {
+          $this->load->view('admin/laporan_legalisir', $data);
+        }else{
+          echo "<script>
+              alert('Data Tidak Ada');
+              window.location.href='" . base_url("admin/legalisir2") . "';
+          </script>";
+      } 
+    }
   }
 
   public function showDetail()
