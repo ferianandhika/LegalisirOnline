@@ -105,18 +105,21 @@ class Legalisir extends CI_Controller
 
   public function save()
   {
+    $opsi = $this->input->post('option');
     $this->form_validation->set_rules('ijazah', 'No Ijazah', 'required|numeric');
-    $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
-    $this->form_validation->set_rules('kota', 'Kota', 'required');
-    $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
-    $this->form_validation->set_rules('courier', 'Expedisi', 'required');
-    $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
-    // $this->form_validation->set_rules('file_ijazah', 'File Ijazah', 'required');
-    // $this->form_validation->set_rules('filetranskrip', 'File Transkrip', 'required');
+    $this->form_validation->set_rules('fileijazah', 'File Ijazah', 'required');
+    $this->form_validation->set_rules('filetranskrip', 'File Transkrip', 'required');
     $this->form_validation->set_rules('jmlijazah', 'Jumlah ijazah', 'required|numeric');
     $this->form_validation->set_rules('jmltranskrip', 'Jumlah transkrip', 'required|numeric');
     $this->form_validation->set_rules('alasan', 'Alasan', 'required');
     $this->form_validation->set_rules('option', 'Opsi Pengiriman', 'required');
+    if ($opsi == "kirim ke alamat tujuan") {
+      $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
+      $this->form_validation->set_rules('kota', 'Kota', 'required');
+      $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
+      $this->form_validation->set_rules('courier', 'Expedisi', 'required');
+      $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
+    }
 
     //rules indonesia
     $this->form_validation->set_message('required', '{field} Wajib diisi');

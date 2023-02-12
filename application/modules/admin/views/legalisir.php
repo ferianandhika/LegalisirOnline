@@ -5,11 +5,11 @@
         <!-- Start content -->
         <div class="content">
             <div class="container-fluid">
-                <h1>Menu Legalisir</h1>
+                <h1>Data Legalisir</h1>
                 <div class="row">
                     <div class="col-12">
                         <div class="card-box table-responsive">
-                            <h4 class="m-t-0 header-title">Data Legalisir</h4>
+                            <h4 class="m-t-0 header-title">Data Proses Legalisir</h4>
                             <table id="key-table" class="table table-bordered">
                                 <thead>
                                     <tr>

@@ -27,7 +27,7 @@
                     <label for="">No Ijazah :</label>
                     <input style="background-color: #F5F5F5" type="text" name="ijazah" placeholder="Masukan No Ijazah Anda"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan No Ijazah Anda'"
-                        class="single-input-primary">
+                        class="single-input-primary" value="<?= set_value('ijazah'); ?>">
                     <small class="text-danger"><?= form_error('ijazah'); ?></small>
                 </div>
                 <h4>Alamat Pengiriman</h4>
@@ -38,12 +38,12 @@
                     <div class="single-input-primary">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="option" id="pilihan1"
-                                value="kirim ke alamat tujuan">
+                                value="kirim ke alamat tujuan" <?= set_radio('option', 'kirim ke alamat tujuan') ?>>
                             <label class="form-check-label" for="pilihan1">Kirim ke rumah</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="option" id="pilihan2"
-                                value="ambil sendiri ke kampus">
+                                value="ambil sendiri ke kampus" <?= set_radio('option', 'ambil sendiri ke kampus') ?>>
                             <label class="form-check-label" for="pilihan2">Ambil Sendiri</label>
                         </div>
                     </div>
@@ -96,6 +96,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- -------->
                 <div class="card bg-light mb-3" id="ambilsendiri" style="display: none;">
                     <div class="card-body">
                         <h5 class="card-title">Alamat Kampus</h5>
@@ -122,7 +123,7 @@
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Masukan Jumlah Legalisir Ijazah Anda'"
                             class="single-input-primary" name="jmlijazah" id="jmlijazah"
-                            onkeyup="hitung_total_legalisir()">
+                            onkeyup="hitung_total_legalisir()" value="<?= set_value('jmlijazah'); ?>">
                         <small class="text-danger"><?= form_error('jmlijazah'); ?></small>
                     </div>
                     <div class="form-group col-lg-4 col-md-6">
@@ -131,7 +132,7 @@
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Masukan Jumlah Legalisir Transkrip Ijazah Anda'"
                             class="single-input-primary" name="jmltranskrip" id="jmltranskrip"
-                            onkeyup="hitung_total_legalisir()">
+                            onkeyup="hitung_total_legalisir()"  value="<?= set_value('jmltranskrip'); ?>">
                         <small class="text-danger"><?= form_error('jmltranskrip'); ?></small>
                     </div>
                     <div class="form-group col-lg-4 col-md-6">
@@ -146,7 +147,7 @@
                 <div class="form-group">
                     <label for="">Alasan Kebutuhan Legalisir :</label>
                     <textarea style="background-color: #F5F5F5" class="single-textarea" placeholder="Masukan Alasan Anda" name="alasan" id="alasan"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan Alasan Anda'"></textarea>
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukan Alasan Anda'"><?= set_value('alasan'); ?></textarea>
                     <small class="text-danger"><?= form_error('alasan'); ?></small>
                 </div>
 

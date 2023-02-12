@@ -5,7 +5,7 @@
     <!-- Start content -->
     <div class="content">
         <div class="container-fluid">
-            <h1>Menu Legalisir</h1>
+            <h1>Data Legalisir</h1>
             <div class="row">
                 <div class="col-12">
                     <div class="card-box table-responsive">
