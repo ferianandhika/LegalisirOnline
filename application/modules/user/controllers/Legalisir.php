@@ -107,8 +107,8 @@ class Legalisir extends CI_Controller
   {
     $opsi = $this->input->post('option');
     $this->form_validation->set_rules('ijazah', 'No Ijazah', 'required|numeric');
-    $this->form_validation->set_rules('fileijazah', 'File Ijazah', 'required');
-    $this->form_validation->set_rules('filetranskrip', 'File Transkrip', 'required');
+    // $this->form_validation->set_rules('fileijazah', 'File Ijazah', 'required');
+    // $this->form_validation->set_rules('filetranskrip', 'File Transkrip', 'required');
     $this->form_validation->set_rules('jmlijazah', 'Jumlah ijazah', 'required|numeric');
     $this->form_validation->set_rules('jmltranskrip', 'Jumlah transkrip', 'required|numeric');
     $this->form_validation->set_rules('alasan', 'Alasan', 'required');
@@ -118,7 +118,6 @@ class Legalisir extends CI_Controller
       $this->form_validation->set_rules('kota', 'Kota', 'required');
       $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
       $this->form_validation->set_rules('courier', 'Expedisi', 'required');
-      $this->form_validation->set_rules('kelurahan', 'Kelurahan', 'required');
     }
 
     //rules indonesia
@@ -166,23 +165,36 @@ class Legalisir extends CI_Controller
         $dataDokumens1 = $this->upload->data();
         $dataDokumen1 = $dataDokumens1['file_name'];
       }
-
-      $data = [
-        'id_user' => $this->input->post('id_user'),
-        'no_ijazah' => $this->input->post('ijazah'),
-        'file_ijazah' => $dataDokumen,
-        'file_transkrip' => $dataDokumen1,
-        'jumlah_ijazah' => $this->input->post('jmlijazah'),
-        'jumlah_transkrip' => $this->input->post('jmltranskrip'),
-        'alasan' => $this->input->post('alasan'),
-        'pengiriman' => $this->input->post('option'),
-        'prov_id' => $this->input->post('provinsi'),
-        'kabkot_id' => $this->input->post('kota'),
-        'kel_name' => $this->input->post('kelurahan'),
-        'harga' => $this->input->post('harga'),
-        'harga_legalisir' => $this->input->post('total_legalisir'),
-        'expedisi' => $this->input->post('courier'),
-      ];
+      if ($opsi == "kirim ke alamat tujuan") {
+        $data = [
+          'id_user' => $this->input->post('id_user'),
+          'no_ijazah' => $this->input->post('ijazah'),
+          'file_ijazah' => $dataDokumen,
+          'file_transkrip' => $dataDokumen1,
+          'jumlah_ijazah' => $this->input->post('jmlijazah'),
+          'jumlah_transkrip' => $this->input->post('jmltranskrip'),
+          'alasan' => $this->input->post('alasan'),
+          'pengiriman' => $this->input->post('option'),
+          'prov_id' => $this->input->post('provinsi'),
+          'kabkot_id' => $this->input->post('kota'),
+          'kel_name' => $this->input->post('kelurahan'),
+          'harga' => $this->input->post('harga'),
+          'harga_legalisir' => $this->input->post('total_legalisir'),
+          'expedisi' => $this->input->post('courier'),
+        ];
+      }else{
+        $data = [
+          'id_user' => $this->input->post('id_user'),
+          'no_ijazah' => $this->input->post('ijazah'),
+          'file_ijazah' => $dataDokumen,
+          'file_transkrip' => $dataDokumen1,
+          'jumlah_ijazah' => $this->input->post('jmlijazah'),
+          'jumlah_transkrip' => $this->input->post('jmltranskrip'),
+          'alasan' => $this->input->post('alasan'),
+          'pengiriman' => $this->input->post('option'),
+          'harga_legalisir' => $this->input->post('total_legalisir'),
+        ];
+      }
       $this->M_legalisir->save($data);
       //redirect('user/legalisir');
       echo "<script>
